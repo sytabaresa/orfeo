@@ -1,0 +1,18 @@
+version: "3"
+
+services:
+  orfeo:
+    image: sytabaresa/orfeo:latest
+    ports:
+      - 8080:80
+    environment:
+      - POSTGRES_PASSWORD=Tc31tsqV9wb5ObMyahHyH1omn4mv
+      - POSTGRES_USER=orfeo
+
+  db:
+    image: postgres:latest
+    volumes:
+      - dbdata:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=Tc31tsqV9wb5ObMyahHyH1omn4mv
+      - POSTGRES_USER=orfeo
