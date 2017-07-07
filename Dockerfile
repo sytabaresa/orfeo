@@ -17,5 +17,5 @@ COPY config/php.ini /usr/local/etc/php//usr/local/etc/php/
 # configuracion para postgres
 COPY config/config.php.postgres config.php
 
-RUN mkdir ./bodega && chown -R www-data ./bodega
+RUN mkdir ./bodega && chown -R www-data ./bodega && ln -s . orfeo
 VOLUME "./bodega"
