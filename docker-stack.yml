@@ -2,17 +2,30 @@ version: "3"
 
 services:
   orfeo:
-    image: sytabaresa/orfeo:latest
+    image: sytabaresa/orfeo:4.5
     ports:
       - 8080:80
+    networks:
+      - backend
     environment:
       - POSTGRES_PASSWORD=Tc31tsqV9wb5ObMyahHyH1omn4mv
       - POSTGRES_USER=orfeo
+      - POSTGRES_DB=orfeo
+      - POSTGRES_HOST=db
 
   db:
     image: postgres:latest
     volumes:
       - dbdata:/var/lib/postgresql/data
+    networks:
+      - backend
     environment:
       - POSTGRES_PASSWORD=Tc31tsqV9wb5ObMyahHyH1omn4mv
       - POSTGRES_USER=orfeo
+      - POSTGRES_DB=orfeo
+
+volumes:
+  dbdata:
+
+networks:
+  backend:
